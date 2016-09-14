@@ -1,6 +1,5 @@
-  ###         ###
- # Hack Fix-It #
-###         ###
+#Hack Fix-It
+
 By CorpNewt
 
 
@@ -10,25 +9,20 @@ By CorpNewt
 
 This script is to be used *ONLY* on the computer it was setup for.  Running it on another machine can cause issues and/or mess up an otherwise working system.  Use with caution!
 
-### WARNING ###
-
 ----------------------------------------------------------------------------------
 
 
-  ###              ###
- # Sample File List #
-###              ###
+## Sample File List
 
-#Hack Fix-It#
+###Hack Fix-It
+
 EFI
 EFIF
 KextList.txt
 ReadMe.txt
 
 
-  ###                 ###
- # Available Functions #
-###                 ###
+### Available Functions
 
 The Hack Fix-It script can do the following:
 
@@ -48,9 +42,7 @@ The Hack Fix-It script can do the following:
   * Options set in the script itself - not with companion files
 
 
-  ###                    ###
- # KextList.txt Structure #
-###                    ###
+## KextList.txt Structure
 
 The KextList.txt accepts two types of entries (one line per each):
 
