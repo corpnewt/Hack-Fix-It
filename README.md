@@ -14,12 +14,11 @@ This script is to be used *ONLY* on the computer it was setup for.  Running it o
 
 ## Sample File List
 
-###Hack Fix-It
-
-EFI
-EFIF
-KextList.txt
-ReadMe.txt
+* Hack Fix-It
+* EFI
+* EFIF
+* KextList.txt
+* ReadMe.txt
 
 
 ### Available Functions
