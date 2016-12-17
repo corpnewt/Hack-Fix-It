@@ -354,7 +354,13 @@ function copy () {
 
 function repairPerms () {
     echo Repairing permissions...
-    sudo /usr/libexec/repair_packages --repair --standard-pkgs --volume /
+    if [[ -e "/usr/libexec/repair_packages" ]]; then
+        sudo /usr/libexec/repair_packages --repair --standard-pkgs --volume /
+    elif [[ -e "$DIR/repair_packages" ]]; then
+        sudo "$DIR/repair_packages" --repair --standard-pkgs --volume /
+    else
+        echo     repair_packages not found - skipping...
+    fi
     echo
 }
 
