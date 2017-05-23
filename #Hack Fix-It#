@@ -9,11 +9,14 @@
 #        REVIEW THESE EVERY TIME        #
 #########################################
 
+# Repair Perms and Rebuild Kext Cache can
+# be Yes/No/Ask
+
 removeEFI="No"
 removeEFIF="No"
-repairPermissions="Yes"
-rebuildKextCache="Yes"
-selectDisk="No"
+repairPermissions="Ask"
+rebuildKextCache="Ask"
+selectDisk="Yes"
 
 #########################################
 #        REVIEW THESE EVERY TIME        #
@@ -287,10 +290,20 @@ function main () {
     
     if [[ "$repairPermissions" == "Yes" ]]; then
         repairPerms
+    elif [[ "$repairPermissions" == "Ask" ]]; then
+        checkPerm check
+        if [[ "$check" == "1" ]]; then
+            repairPerms
+        fi
     fi
     
     if [[ "$rebuildKextCache" == "Yes" ]]; then
         rebuildKC
+    elif [[ "$rebuildKextCache" == "Ask" ]]; then
+        checkReb check
+        if [[ "$check" == "1" ]]; then
+            rebuildKC
+        fi
     fi
 
     echo Done.
@@ -298,6 +311,40 @@ function main () {
     sleep 3
     
     customQuit
+}
+
+function checkPerm () {
+    clear
+    echo \#\#\# Repair Permissions? \#\#\#
+    echo
+    echo "Do you want to attempt to repair permissions? (y/n):"
+    echo
+    read toDo
+
+    if [[ "$toDo" == "y" ]]; then
+        eval $1=1
+    elif [[ "$toDo" == "n" ]]; then
+        eval $1=0
+    else
+        checkPerm $1
+    fi
+}
+
+function checkReb () {
+    clear
+    echo "### Rebuild Kext Cache? ###"
+    echo
+    echo "Do you want to rebuild kext cache? (y/n):"
+    echo
+    read toDo
+
+    if [[ "$toDo" == "y" ]]; then
+        eval $1=1
+    elif [[ "$toDo" == "n" ]]; then
+        eval $1=0
+    else
+        checkReb $1
+    fi
 }
 
 function backup () {
